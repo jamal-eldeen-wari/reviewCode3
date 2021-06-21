@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Online Shop</title>
+</head>
+<body>
+    <header>
+
+    </header>
+
+    <main>
+        <div id="formContainer">
+            <form id="form">
+                <fieldset>
+                    <label for="itemName"> Item Name</label>
+                    <input type="text" name="itemName" id="itemName">
+                    <br>
+                    <br>
+                    <label for="category">Category</label>
+                    <select name="category" id="category">
+                        <option value="Monitor">Monitor</option>
+                        <option value="Case">Case</option>
+                        <option value="Head Phones">Head Phones</option>
+                        <option value="Keyboard">Keyboard</option>
+                    </select>
+                    <br>
+                    <br>
+                    <label for="quantity">Quantity</label>
+                    <input type="number" name="quantity" id="quantity">
+                    <br>
+                    <br>
+                    <input type="submit" value="add to table" id="add">
+                </fieldset>
+            </form>
+
+        </div>
+
+        <div id="tableContainer">
+            <table id="table">
+
+            </table>
+
+        </div>
+
+    </main>
+    <footer>
+        <script src="app.js"></script>
+    </footer>
+    
+</body>
+</html>
