@@ -29,6 +29,7 @@ function submitHandler(event){
 }
 let tableContainer = document.getElementById('tableContainer');
 let table = document.getElementById('table');
+let tBody = document.getElementById('tbody');
 tableContainer.appendChild(table);
 
 function header(){
@@ -41,10 +42,11 @@ function header(){
     }
 }
 header();
-let trBody;
+table.appendChild(tBody);
+
 Product.prototype.render = function(){
-    trBody = document.createElement('tr');
-    table.appendChild(trBody);
+    let trBody = document.createElement('tr');
+    tBody.appendChild(trBody);
 
     let tdItem = document.createElement('td');
     trBody.appendChild(tdItem);
@@ -69,19 +71,28 @@ Product.prototype.render = function(){
     tdDelete.addEventListener('click', deletingRow);
 
 
-    let pTotal = document.createElement('p');
-    tableContainer.appendChild(pTotal);
-    pTotal.textContent = `Total is ${totalPrice()}`;
+    // let pTotal = document.createElement('p');
+    // if(pTotal.textContent === `Total is ${totalPrice()}`){
+    //     pTotal.textContent = ''
+    //     console.log('hello');
+    // }else{
 
+    //     tableContainer.appendChild(pTotal);
+    //     pTotal.textContent = `Total is ${totalPrice()}`;
+    // }
+    let pTotal = document.getElementById('total');
+    pTotal.textContent = `Total is ${totalPrice()}`
+    
 }
 
 function deletingRow(){
     // console.log(allProducts);
     for(let i = 0; i<allProducts.length; i++){
-        table.deleteRow( allProducts.splice(i, 0));
+        tBody.deleteRow( allProducts.splice(i, 1));
         // console.log(allProducts.splice(i, 0));
-
+        
     }
+    localStorage.setItem('PC Products', JSON.stringify(allProducts));
 }
 function gettingData(){
     if(localStorage.getItem('PC Products')){
@@ -94,8 +105,8 @@ gettingData();
 
 function renderAgain(){
     for(let i = 0; i<allProducts.length; i++){
-         trBody = document.createElement('tr');
-        table.appendChild(trBody);
+         let trBody = document.createElement('tr');
+        tBody.appendChild(trBody);
     
         let tdItem = document.createElement('td');
         trBody.appendChild(tdItem);
@@ -113,9 +124,12 @@ function renderAgain(){
         trBody.appendChild(tdPrice);
         tdPrice.textContent = allProducts[i].price;
     }
-    let pTotal = document.createElement('p');
-    tableContainer.appendChild(pTotal);
-    pTotal.textContent = `Total is ${totalPrice()}`;
+    // let pTotal = document.createElement('p');
+    // tableContainer.appendChild(pTotal);
+    // pTotal.textContent = `Total is ${totalPrice()}`;
+
+    let pTotal = document.getElementById('total');
+    pTotal.textContent = `Total is ${totalPrice()}`
 
 }
 
